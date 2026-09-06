@@ -11,11 +11,9 @@ def connectfour():
                 f = open("user_data.txt")
                 f.readline()
                 leaderboard = f.readline()
-                print(leaderboard)
-                leaderboard = dict(leaderboard)
-                print(len(leaderboard))
-                print(type(leaderboard))
-                if leaderboard == "":
+                length_leaderboard = len(leaderboard)
+                print(length_leaderboard)
+                if length_leaderboard == 0:
                     print("No leaderboard data so far!")
             except FileNotFoundError:
                 print("Sorry, there was an error loading the data!")

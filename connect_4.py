@@ -1,7 +1,8 @@
 def connectfour():
     valid = False
+    print("Welcome to Connect 4!")
     while valid is False:
-        print("Welcome to Connect 4!\np - play  l - leaderboard  q - quit")
+        print("\np - play  l - leaderboard  q - quit")
         choice = input("What would you like to do? ").lower()
         if choice == "p" or choice == "play":
             valid = True
@@ -11,6 +12,9 @@ def connectfour():
                 f.readline()
                 leaderboard = f.readline()
                 print(leaderboard)
+                leaderboard = dict(leaderboard)
+                print(len(leaderboard))
+                print(type(leaderboard))
                 if leaderboard == "":
                     print("No leaderboard data so far!")
             except FileNotFoundError:
@@ -19,3 +23,4 @@ def connectfour():
             valid = True
         else:
             print("Sorry, I don't know that one!")
+connectfour()

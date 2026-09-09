@@ -25,7 +25,6 @@ while running is True:
     #game = input("What game do you choose? ('q' to \033[31mquit\033[0m): ").lower()
     if attempt == 0:
         game = input("What game do you choose: ").lower()
-        attempt += 1
     else:
         game = input("What game do you choose? ('q' to quit): ").lower()
     if game == "1" or game == "connect 4":
@@ -38,4 +37,5 @@ while running is True:
         running = False
     else:
         print("I don't know that one! Please input a game number, or input 'q' to quit!\n")
+        attempt += 1
 print(f"Thanks for playing, {name.splitlines()[0]}!")

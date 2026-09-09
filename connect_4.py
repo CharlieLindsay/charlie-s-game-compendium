@@ -12,13 +12,13 @@ def connectfour():
                 f.readline()
                 leaderboard = f.readline()
                 length_leaderboard = len(leaderboard)
-                print(length_leaderboard)
                 if length_leaderboard == 0:
                     print("No leaderboard data so far!")
+                else:
+                    print(leaderboard)
             except FileNotFoundError:
                 print("Sorry, there was an error loading the data!")
         elif choice == "q" or choice == "quit":
             valid = True
         else:
             print("Sorry, I don't know that one!")
-connectfour()

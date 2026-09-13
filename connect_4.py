@@ -41,31 +41,55 @@ def connectfour():
                 for i in range(7):
                     if row0[i] == 0:
                         row += "."
+                    elif row0[i] == 1:
+                        row += "X"
+                    elif row0[i] == 2:
+                        row += "O"
                 print(row)
                 row = ""
                 for i in range(7):
                     if row1[i] == 0:
                         row += "."
+                    elif row1[i] == 1:
+                        row += "X"
+                    elif row1[i] == 2:
+                        row += "O"
                 print(row)
                 row = ""
                 for i in range(7):
                     if row2[i] == 0:
                         row += "."
+                    elif row2[i] == 1:
+                        row += "X"
+                    elif row2[i] == 2:
+                        row += "O"
                 print(row)
                 row = ""
                 for i in range(7):
                     if row3[i] == 0:
                         row += "."
+                    elif row3[i] == 1:
+                        row += "X"
+                    elif row3[i] == 2:
+                        row += "O"
                 print(row)
                 row = ""
                 for i in range(7):
                     if row4[i] == 0:
                         row += "."
+                    elif row4[i] == 1:
+                        row += "X"
+                    elif row4[i] == 2:
+                        row += "O"
                 print(row)
                 row = ""
                 for i in range(7):
                     if row5[i] == 0:
                         row += "."
+                    elif row5[i] == 1:
+                        row += "X"
+                    elif row5[i] == 2:
+                        row += "O"
                 print(row)
                 valid_turn = False
                 while valid_turn is False:
@@ -73,39 +97,39 @@ def connectfour():
                     column = (int(input("Choose a column: "))-1)
                     if row5[column] == 0:
                         if current_player == 1:
-                            row5[column] = "X"
+                            row5[column] = 1
                         else:
-                            row5[column] = "O"
+                            row5[column] = 2
                         valid_turn = True
                     elif row4[column] == 0:
                         if current_player == 1:
-                            row4[column] = "X"
+                            row4[column] = 1
                         else:
-                            row4[column] = "O"
+                            row4[column] = 2
                         valid_turn = True
                     elif row3[column] == 0:
                         if current_player == 1:
-                            row3[column] = "X"
+                            row3[column] = 1
                         else:
-                            row3[column] = "O"
+                            row3[column] = 2
                         valid_turn = True
                     elif row2[column] == 0:
                         if current_player == 1:
-                            row2[column] = "X"
+                            row2[column] = 1
                         else:
-                            row2[column] = "O"
+                            row2[column] = 2
                         valid_turn = True
                     elif row1[column] == 0:
                         if current_player == 1:
-                            row1[column] = "X"
+                            row1[column] = 1
                         else:
-                            row1[column] = "O"
+                            row1[column] = 2
                         valid_turn = True
                     elif row0[column] == 0:
                         if current_player == 1:
-                            row0[column] = "X"
+                            row0[column] = 1
                         else:
-                            row0[column] = "O"
+                            row0[column] = 2
                         valid_turn = True
                     else:
                         print("Sorry, there is no space on that column!")

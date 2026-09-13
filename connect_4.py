@@ -36,8 +36,6 @@ def connectfour():
                                     current += leaderboard[i]
                                 elif leaderboard[i] == "$":
                                     mode = "wins"
-                                    if len(current) > largest:
-                                        largest = len(current)
                             elif mode == "wins":
                                 if leaderboard[i] != "&":
                                     current_score += str(leaderboard[i])  # Adds the current score to a string in case it is more than single digit
@@ -81,6 +79,16 @@ def connectfour():
                                         fifth_value = current_score
                                     current_score = ""
                                     current = ""
+                        if len(first) > largest:
+                            largest = len(first)
+                        if len(second) > largest:
+                            largest = len(second)
+                        if len(third) > largest:
+                            largest = len(third)
+                        if len(fourth) > largest:
+                            largest = len(fourth)
+                        if len(fifth) > largest:
+                            largest = len(fifth)
                         print("===LEADERBOARD===")
                         name_column = "Name"
                         if largest > 4:

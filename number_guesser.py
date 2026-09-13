@@ -21,7 +21,12 @@ def numberguesser():
         print("\np - play  l - leaderboard  q - quit")
         choice = input("What would you like to do? ").lower()
         if choice == "p" or choice == "play":
-            valid = True
+            lowest = int(input("Enter the lowest possible number: "))
+            highest = lowest
+            while highest < (lowest + 100):
+                highest = int(input("\nEnter the highest possible number: "))
+                if highest < (lowest + 100):
+                    print("Must be at least 100 higher than the lowest!")
         elif choice == "l" or choice == "leaderboard":
             try:
                 with open("number_guesser_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file

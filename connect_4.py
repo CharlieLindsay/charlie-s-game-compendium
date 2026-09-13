@@ -1,5 +1,8 @@
 """Connect Four Function Definition File."""
 def connectfour():
+    import os
+    clear = lambda: os.system('clear')
+    clear()
     LEADERBOARD_AMOUNT = 5
     largest = 0
     first = ""
@@ -20,6 +23,95 @@ def connectfour():
         choice = input("What would you like to do? ").lower()
         if choice == "p" or choice == "play":
             valid = True
+            row0 = [0,0,0,0,0,0,0]
+            row1 = [0,0,0,0,0,0,0]
+            row2 = [0,0,0,0,0,0,0]
+            row3 = [0,0,0,0,0,0,0]
+            row4 = [0,0,0,0,0,0,0]
+            row5 = [0,0,0,0,0,0,0]
+            current_player = 2
+            winner = False
+            while winner is False:
+                if current_player == 2:
+                    current_player = 1
+                else:
+                    current_player = 2
+                clear()
+                row = ""
+                for i in range(7):
+                    if row0[i] == 0:
+                        row += "."
+                print(row)
+                row = ""
+                for i in range(7):
+                    if row1[i] == 0:
+                        row += "."
+                print(row)
+                row = ""
+                for i in range(7):
+                    if row2[i] == 0:
+                        row += "."
+                print(row)
+                row = ""
+                for i in range(7):
+                    if row3[i] == 0:
+                        row += "."
+                print(row)
+                row = ""
+                for i in range(7):
+                    if row4[i] == 0:
+                        row += "."
+                print(row)
+                row = ""
+                for i in range(7):
+                    if row5[i] == 0:
+                        row += "."
+                print(row)
+                valid_turn = False
+                while valid_turn is False:
+                    print(f"Player {current_player}'s Turn.")
+                    column = (int(input("Choose a column: "))-1)
+                    if row5[column] == 0:
+                        if current_player == 1:
+                            row5[column] = "X"
+                        else:
+                            row5[column] = "O"
+                        valid_turn = True
+                    elif row4[column] == 0:
+                        if current_player == 1:
+                            row4[column] = "X"
+                        else:
+                            row4[column] = "O"
+                        valid_turn = True
+                    elif row3[column] == 0:
+                        if current_player == 1:
+                            row3[column] = "X"
+                        else:
+                            row3[column] = "O"
+                        valid_turn = True
+                    elif row2[column] == 0:
+                        if current_player == 1:
+                            row2[column] = "X"
+                        else:
+                            row2[column] = "O"
+                        valid_turn = True
+                    elif row1[column] == 0:
+                        if current_player == 1:
+                            row1[column] = "X"
+                        else:
+                            row1[column] = "O"
+                        valid_turn = True
+                    elif row0[column] == 0:
+                        if current_player == 1:
+                            row0[column] = "X"
+                        else:
+                            row0[column] = "O"
+                        valid_turn = True
+                    else:
+                        print("Sorry, there is no space on that column!")
+
+
+
         elif choice == "l" or choice == "leaderboard":
             try:
                 with open("connect_four_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file
@@ -122,4 +214,11 @@ def connectfour():
             valid = True
         else:
             print("Sorry, I don't know that one!")
+
+
+
+
+
+
+
 connectfour()

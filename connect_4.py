@@ -44,41 +44,41 @@ def connectfour():
                                 elif leaderboard[i] == "&":
                                     mode = "name"
                                     current_score = int(current_score)
-                                    if current_score > fifth_value:
-                                        fifth = current
-                                        fifth_value = current_score
-                                    if current_score > fourth_value:
-                                        fifth_value = fourth_value
-                                        fifth = fourth
-                                        fourth = current
-                                        fourth = current_score
-                                    if current_score > third_value:
+                                    if current_score > first_value:
                                         fifth = fourth
                                         fifth_value = fourth_value
-                                        fourth_value = third_value
                                         fourth = third
-                                        third = current
-                                        third_value = current_score
-                                    if current_score > second_value:
-                                        fifth = fourth
-                                        fifth_value = fourth_value
                                         fourth_value = third_value
-                                        fourth = third
-                                        third = second
-                                        third_value = second_value
-                                        second = current
-                                        second_value = current_score
-                                    if current_score > first_value:  # If the current checking score is higher than the current best, all the leaderboard moves down
-                                        fifth = fourth
-                                        fifth_value = fourth_value
-                                        fourth_value = third_value
-                                        fourth = third
                                         third = second
                                         third_value = second_value
                                         second = first
                                         second_value = first_value
                                         first = current
                                         first_value = current_score
+                                    elif current_score > second_value:
+                                        fifth = fourth
+                                        fifth_value = fourth_value
+                                        fourth = third
+                                        fourth_value = third_value
+                                        third = second
+                                        third_value = second_value
+                                        second = current
+                                        second_value = current_score
+                                    elif current_score > third_value:
+                                        fifth = fourth
+                                        fifth_value = fourth_value
+                                        fourth = third
+                                        fourth_value = third_value
+                                        third = current
+                                        third_value = current_score
+                                    elif current_score > fourth_value:
+                                        fifth = fourth
+                                        fifth_value = fourth_value
+                                        fourth = current
+                                        fourth_value = current_score
+                                    elif current_score > fifth_value:
+                                        fifth = current
+                                        fifth_value = current_score
                                     current_score = ""
                                     current = ""
                         print("===LEADERBOARD===")
@@ -95,13 +95,13 @@ def connectfour():
                         for i in range(largest-len(first)):
                             first_gap += " "
                         for i in range(largest-len(second)):
-                            first_gap += " "
+                            second_gap += " "
                         for i in range(largest-len(third)):
-                            first_gap += " "
+                            third_gap += " "
                         for i in range(largest-len(fourth)):
-                            first_gap += " "
+                            fourth_gap += " "
                         for i in range(largest-len(fifth)):
-                            first_gap += " "
+                            fifth_gap += " "
                         print(name_column)
                         print(first+first_gap+str(first_value))
                         print(second+second_gap+str(second_value))

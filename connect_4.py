@@ -134,8 +134,6 @@ def connectfour():
                     else:
                         print("Sorry, there is no space on that column!")
 
-
-
         elif choice == "l" or choice == "leaderboard":
             try:
                 with open("connect_four_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file
@@ -239,10 +237,4 @@ def connectfour():
         else:
             print("Sorry, I don't know that one!")
 
-
-
-
-
-
-
-connectfour()
+#connectfour()

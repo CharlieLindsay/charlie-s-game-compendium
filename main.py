@@ -14,14 +14,14 @@ if exists == True:
     print(f"Welcome back, {name}")
 else:
     name = menu.new()
-    f = open("user_data.txt", "x")
-    f.write(name)
+    with open("user_data.txt", "w") as f:
+        f.write(name)
     print(f"Hi, {name}!")
 while running is True:
     #print("\n\033[1mThere are three games to choose from:\033[0m\n1. Connect 4"
     #    "\n2. Number Guesser\n3. Tic Tac Toe\n")
     print("There are three games to choose from:\n1. Connect 4"
-          "\n2. Number Guesser\n3. Tic Tac Toe\n")
+          "\n2. Number Guesser\n3. Tic Tac Toe\n4. Change Name")
     #game = input("What game do you choose? ('q' to \033[31mquit\033[0m): ").lower()
     if attempt == 0:
         game = input("What game do you choose: ").lower()
@@ -33,6 +33,11 @@ while running is True:
         number_guesser.numberguesser()
     elif game == "3" or game == "tic tac toe":
         tic_tac_toe.tictactoe()
+    elif game == "4" or game == "change name":
+        name = input("\nWhat would you like to be called now? ")
+        with open("user_data.txt", "w") as f:
+            f.write(name)
+        print(f"Hi, {name}!\n")
     elif game == "q" or game == "quit":
         running = False
     else:

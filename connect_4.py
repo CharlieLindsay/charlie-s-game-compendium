@@ -123,10 +123,6 @@ def connectfour():
             winner = False
             turns = 0
             while winner is False:
-                if current_player == 2:
-                    current_player = 1
-                else:
-                    current_player = 2
                 clear()
                 row = ""
                 for i in range(7):
@@ -191,6 +187,10 @@ def connectfour():
                             winning_player = current_player
                             winner = True
                             valid_turn = True
+                    if current_player == 2:
+                        current_player = 1
+                    else:
+                        current_player = 2
                     if winner != True:
                         print(f"Player {current_player}'s Turn.")
                         column = (int(input("Choose a column: "))-1)
@@ -269,7 +269,7 @@ def connectfour():
                         f.write(leaderboard)
             if exists == False:
                 with open("connect_four_leaderboard.txt", "a") as f:
-                    f.write("&" + name_player + "$" + str(1) + "&")
+                    f.write(name_player + "$" + str(1) + "&")
 
         elif choice == "l" or choice == "leaderboard":
             print("===LEADERBOARD===")
@@ -283,4 +283,3 @@ def connectfour():
             valid = True
         else:
             print("Sorry, I don't know that one!")
-connectfour()

@@ -20,6 +20,10 @@ def connectfour():
     names = []
     mode = "name"  # Leaderboard uses to track whether currently checking for name or score
     print("Welcome to Connect 4!")
+    print("\nHow to play:\n")
+    print("Connect 4 is a verticle game in real life. In this version of the game, every round switches players, and each player has an opportunity to put a 'token' of their's in that column.\n"
+          "All you need to do is put a token in the column of your choosing, and the token will fall to the lowest available spot.\nIf you have a verticle, horizontal, or diagonal 4 in a row of tokens, "
+          "you are the winner!")
     with open("connect_four_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file
         leaderboard = f.readline()
         length_leaderboard = len(leaderboard)
@@ -194,45 +198,51 @@ def connectfour():
 
                     if winner != True:
                         print(f"Player {current_player}'s Turn.")
-                        column = (int(input("Choose a column: "))-1)
-                        if row5[column] == 0:
-                            if current_player == 1:
-                                row5[column] = 1
+                        try:
+                            column = (int(input("Choose a column: "))-1)
+                            if column < 0 or column > 6:
+                                print("Sorry, that is invalid!")
                             else:
-                                row5[column] = 2
-                            valid_turn = True
-                        elif row4[column] == 0:
-                            if current_player == 1:
-                                row4[column] = 1
-                            else:
-                                row4[column] = 2
-                            valid_turn = True
-                        elif row3[column] == 0:
-                            if current_player == 1:
-                                row3[column] = 1
-                            else:
-                                row3[column] = 2
-                            valid_turn = True
-                        elif row2[column] == 0:
-                            if current_player == 1:
-                                row2[column] = 1
-                            else:
-                                row2[column] = 2
-                            valid_turn = True
-                        elif row1[column] == 0:
-                            if current_player == 1:
-                                row1[column] = 1
-                            else:
-                                row1[column] = 2
-                            valid_turn = True
-                        elif row0[column] == 0:
-                            if current_player == 1:
-                                row0[column] = 1
-                            else:
-                                row0[column] = 2
-                            valid_turn = True
-                        else:
-                            print("Sorry, there is no space on that column!")
+                                if row5[column] == 0:
+                                    if current_player == 1:
+                                        row5[column] = 1
+                                    else:
+                                        row5[column] = 2
+                                    valid_turn = True
+                                elif row4[column] == 0:
+                                    if current_player == 1:
+                                        row4[column] = 1
+                                    else:
+                                        row4[column] = 2
+                                    valid_turn = True
+                                elif row3[column] == 0:
+                                    if current_player == 1:
+                                        row3[column] = 1
+                                    else:
+                                        row3[column] = 2
+                                    valid_turn = True
+                                elif row2[column] == 0:
+                                    if current_player == 1:
+                                        row2[column] = 1
+                                    else:
+                                        row2[column] = 2
+                                    valid_turn = True
+                                elif row1[column] == 0:
+                                    if current_player == 1:
+                                        row1[column] = 1
+                                    else:
+                                        row1[column] = 2
+                                    valid_turn = True
+                                elif row0[column] == 0:
+                                    if current_player == 1:
+                                        row0[column] = 1
+                                    else:
+                                        row0[column] = 2
+                                    valid_turn = True
+                                else:
+                                    print("Sorry, there is no space on that column!")
+                        except ValueError:
+                            print("Sorry, that is invalid!")
                         """
                         in_a_row = 0
                         for i in range(7):

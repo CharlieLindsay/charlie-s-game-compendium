@@ -4,6 +4,7 @@ def connectfour():
     clear = lambda: os.system('clear')
     clear()
     LEADERBOARD_AMOUNT = 5
+    in_a_row = 0
     largest = 0
     first = ""
     first_value = 0
@@ -31,6 +32,7 @@ def connectfour():
             row5 = [0,0,0,0,0,0,0]
             current_player = 2
             winner = False
+            turns = 0
             while winner is False:
                 if current_player == 2:
                     current_player = 1
@@ -93,47 +95,74 @@ def connectfour():
                 print(row)
                 valid_turn = False
                 while valid_turn is False:
-                    print(f"Player {current_player}'s Turn.")
-                    column = (int(input("Choose a column: "))-1)
-                    if row5[column] == 0:
-                        if current_player == 1:
-                            row5[column] = 1
+                    turns += 1
+                    if turns >= 9:
+                        winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
+                        if winner_announced == "y":
+                            winning_player = current_player
+                            winner = True
+                            valid_turn = True
+                    if winner != True:
+                        print(f"Player {current_player}'s Turn.")
+                        column = (int(input("Choose a column: "))-1)
+                        if row5[column] == 0:
+                            if current_player == 1:
+                                row5[column] = 1
+                            else:
+                                row5[column] = 2
+                            valid_turn = True
+                        elif row4[column] == 0:
+                            if current_player == 1:
+                                row4[column] = 1
+                            else:
+                                row4[column] = 2
+                            valid_turn = True
+                        elif row3[column] == 0:
+                            if current_player == 1:
+                                row3[column] = 1
+                            else:
+                                row3[column] = 2
+                            valid_turn = True
+                        elif row2[column] == 0:
+                            if current_player == 1:
+                                row2[column] = 1
+                            else:
+                                row2[column] = 2
+                            valid_turn = True
+                        elif row1[column] == 0:
+                            if current_player == 1:
+                                row1[column] = 1
+                            else:
+                                row1[column] = 2
+                            valid_turn = True
+                        elif row0[column] == 0:
+                            if current_player == 1:
+                                row0[column] = 1
+                            else:
+                                row0[column] = 2
+                            valid_turn = True
                         else:
-                            row5[column] = 2
-                        valid_turn = True
-                    elif row4[column] == 0:
-                        if current_player == 1:
-                            row4[column] = 1
-                        else:
-                            row4[column] = 2
-                        valid_turn = True
-                    elif row3[column] == 0:
-                        if current_player == 1:
-                            row3[column] = 1
-                        else:
-                            row3[column] = 2
-                        valid_turn = True
-                    elif row2[column] == 0:
-                        if current_player == 1:
-                            row2[column] = 1
-                        else:
-                            row2[column] = 2
-                        valid_turn = True
-                    elif row1[column] == 0:
-                        if current_player == 1:
-                            row1[column] = 1
-                        else:
-                            row1[column] = 2
-                        valid_turn = True
-                    elif row0[column] == 0:
-                        if current_player == 1:
-                            row0[column] = 1
-                        else:
-                            row0[column] = 2
-                        valid_turn = True
-                    else:
-                        print("Sorry, there is no space on that column!")
-
+                            print("Sorry, there is no space on that column!")
+                        """
+                        in_a_row = 0
+                        for i in range(7):
+                            
+                            if row0[i] == 1:
+                                try:
+                                    if row1[i-1] != 1 and row1[i+1] != 1:
+                                        in_a_row += 2
+                                except IndexError:
+                                    try:
+                                        if row1[i-1] == 1:
+                                            in_a_row += 2
+                                    except IndexError:
+                                        try:
+                                            if row == 1:
+                                                in_a_row += 2
+                                        except:
+                                            in_a_row += 1
+                        """
+            print("Hi")
         elif choice == "l" or choice == "leaderboard":
             try:
                 with open("connect_four_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file
@@ -237,4 +266,4 @@ def connectfour():
         else:
             print("Sorry, I don't know that one!")
 
-#connectfour()
+connectfour()

@@ -1,5 +1,6 @@
 def numberguesser():
     import os
+    import random
     clear = lambda: os.system('clear')
     clear()
     LEADERBOARD_AMOUNT = 5
@@ -27,6 +28,7 @@ def numberguesser():
                 highest = int(input("\nEnter the highest possible number: "))
                 if highest < (lowest + 100):
                     print("Must be at least 100 higher than the lowest!")
+            number = random.randint(lowest, highest)
         elif choice == "l" or choice == "leaderboard":
             try:
                 with open("number_guesser_leaderboard.txt") as f:  # (Attempts) opening the leaderboard data file

@@ -256,17 +256,20 @@ def connectfour():
             for i in range(len(names)):
                 if name_player == names[i]:
                     exists = True
-                    amount = names.index(name_player)  # 2
+                    amount = names.index(name_player)
                     times = 0
                     passed_names = 0
-                    while passed_names < (amount+1):  # While less than 3
-                        if leaderboard[times] == "$":  
+                    while passed_names < (amount+1):
+                        if leaderboard[times] == "$":
                             passed_names += 1
                         times += 1
-                    new_score = int(leaderboard[times]) + 1
-                    leaderboard = leaderboard[:times] + str(new_score) + leaderboard[times + 1:]
+                    end = leaderboard.index("&", times)
+                    new_score = int(leaderboard[times:end]) + 1
+                    leaderboard = leaderboard[:times] + str(new_score) + leaderboard[end:]
                     with open("connect_four_leaderboard.txt", "w") as f:
                         f.write(leaderboard)
+                    break
+                
             if exists == False:
                 with open("connect_four_leaderboard.txt", "a") as f:
                     f.write(name_player + "$" + str(1) + "&")

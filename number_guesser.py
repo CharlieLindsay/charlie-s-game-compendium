@@ -1,7 +1,7 @@
 def numberguesser():
     import os
     import random
-    clear = lambda: os.system('clear')
+    clear = lambda: os.system('clear')  # Allows me to quickly clear the terminal
     clear()
     LEADERBOARD_AMOUNT = 5
     largest = 0
@@ -109,7 +109,7 @@ def numberguesser():
             for i in range(largest-len(fifth)):
                 fifth_gap += " "
     
-    print("Welcome to Number Gusser!")
+    print("Welcome to Number Guesser!")
     print("Number Guesser is a simple game where you first choose 2 numbers to guess between (at least 100 apart).\n"
           "You then guess the number which will be randomly generated. Once you get it correct, your score is 20-guesses (lowest score is 1).\n"
           "Have fun!")
@@ -119,12 +119,24 @@ def numberguesser():
         if choice == "p" or choice == "play":
             score = 20
             clear()
-            lowest = int(input("Enter the lowest possible number: "))
+            valid = False
+            while valid is False:
+                try:
+                    lowest = int(input("Enter the lowest possible number: "))
+                    valid = True
+                except ValueError:
+                    print("Must be an integer!")
             highest = lowest
-            while highest < (lowest + 100):
-                highest = int(input("\nEnter the highest possible number: "))
-                if highest < (lowest + 100):
-                    print("Must be at least 100 higher than the lowest!")
+            valid = False
+            while valid is False:
+                try:
+                    highest = int(input("\nEnter the highest possible number: "))
+                    if highest < (lowest + 100):
+                        print("Must be at least 100 higher than the lowest!")
+                    else:
+                        valid = True
+                except ValueError:
+                    print("Must be an integer!")
             number = random.randint(lowest, highest)
             guessed = False
             closest_high = highest
@@ -132,7 +144,13 @@ def numberguesser():
             while guessed is False:
                 clear()
                 print(f"You know it is between {closest_low} and {closest_high}.")
-                guess = int(input("Guess the number: "))
+                valid = False
+                while valid is False:
+                    try:
+                        guess = int(input("Guess the number: "))
+                        valid = True
+                    except ValueError:
+                        print("Must be an integer!")
                 if guess < highest and guess > lowest:
                     if guess > number:
                         if closest_high > guess:
@@ -187,4 +205,4 @@ def numberguesser():
         else:
             print("Sorry, I don't know that one!")
 
-numberguesser()
+#numberguesser()

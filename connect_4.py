@@ -109,7 +109,6 @@ def connectfour():
             for i in range(largest-len(fifth)):
                 fifth_gap += " "
     while valid is False:  # Keeps going until the user has chosen a valid input
-        print(names)
         print("\np - play  l - leaderboard  q - quit")
         choice = input("What would you like to do? ").lower()
         if choice == "p" or choice == "play":
@@ -268,7 +267,9 @@ def connectfour():
                     leaderboard = leaderboard[:times] + str(new_score) + leaderboard[times + 1:]
                     with open("connect_four_leaderboard.txt", "w") as f:
                         f.write(leaderboard)
-                    
+            if exists == False:
+                with open("connect_four_leaderboard.txt", "a") as f:
+                    f.write("&" + name_player + "$" + str(1) + "&")
 
         elif choice == "l" or choice == "leaderboard":
             print("===LEADERBOARD===")

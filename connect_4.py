@@ -179,18 +179,19 @@ def connectfour():
                         row += "O"
                 print(row)
                 valid_turn = False
+                turns += 1
+                if turns >= 8:
+                    winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
+                    if winner_announced == "y":
+                        winning_player = current_player
+                        winner = True
+                        valid_turn = True
+                if current_player == 2:
+                    current_player = 1
+                else:
+                    current_player = 2
                 while valid_turn is False:
-                    turns += 1
-                    if turns >= 9:
-                        winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
-                        if winner_announced == "y":
-                            winning_player = current_player
-                            winner = True
-                            valid_turn = True
-                    if current_player == 2:
-                        current_player = 1
-                    else:
-                        current_player = 2
+
                     if winner != True:
                         print(f"Player {current_player}'s Turn.")
                         column = (int(input("Choose a column: "))-1)

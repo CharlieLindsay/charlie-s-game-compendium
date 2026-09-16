@@ -151,7 +151,7 @@ def numberguesser():
                         valid = True
                     except ValueError:
                         print("Must be an integer!")
-                if guess < highest and guess > lowest:
+                if guess < closest_high and guess > closest_low:
                     if guess > number:
                         if closest_high > guess:
                             closest_high = guess
@@ -170,7 +170,7 @@ def numberguesser():
                         if score > 1:
                             score -= 1
                 else:
-                    print("Guess between your chosen numbers!")
+                    print("Guess between your known range!")
                 if guessed is False:
                     input("Press any key to continue")
             name_player = input(f"What is your name? ")
@@ -192,6 +192,9 @@ def numberguesser():
                         with open("number_guesser_leaderboard.txt", "w") as f:
                             f.write(leaderboard)
                     break
+            if exists == False:
+                with open("number_guesser_leaderboard.txt", "a") as f:
+                    f.write(name_player + "$" + str(score) + "&")
         elif choice == "l" or choice == "leaderboard":
             print("===LEADERBOARD===")
             print(name_column)

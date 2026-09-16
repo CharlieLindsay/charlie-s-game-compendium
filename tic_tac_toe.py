@@ -122,6 +122,8 @@ def tictactoe():
             current_player = 2
             winner = False
             turns = 0
+            tie = False
+            turn = 0
             while winner is False:
                 clear()
                 row = ""
@@ -151,82 +153,94 @@ def tictactoe():
                     elif row2[i] == 2:
                         row += "O"
                 print(row)
-                valid_turn = False
-                """
-                turns += 1
-                if turns >= 8:
-                    winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
-                    if winner_announced == "y":
-                        winning_player = current_player
+                if turn >= 5:
+                    response = input(f"Has {current_player} won (N/y)? ").lower()
+                    if response == "y":
                         winner = True
-                        valid_turn = True
+                        winning_player = current_player
+                if winner is False:
+                    if turn > 8:
+                        tie = True
+                        winner = True
+                    else:
+                        valid_turn = False
                         """
-                if current_player == 2:
-                    current_player = 1
-                else:
-                    current_player = 2
-                valid_turn = False
-                while valid_turn is False:
-
-                    if winner is False:
-                        print(f"Player {current_player}'s Turn.")
-                        taken = True
-                        while taken is True:
-                            valid = False
-                            while valid is False:
-                                try:
-                                    row = int(input("Choose a row (0-2): "))
-                                    column = int(input("Choose a column (0-2): "))
-                                    if column >= 0 and column <= 2 and row >= 0 and row <= 2:
-                                        valid = True
+                        turns += 1
+                        if turns >= 8:
+                            winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
+                            if winner_announced == "y":
+                                winning_player = current_player
+                                winner = True
+                                valid_turn = True
+                                """
+                        if current_player == 2:
+                            current_player = 1
+                        else:
+                            current_player = 2
+                        valid_turn = False
+                        while valid_turn is False:
+                            if winner is False:
+                                print(f"Player {current_player}'s Turn.")
+                                taken = True
+                                while taken is True:
+                                    valid = False
+                                    while valid is False:
+                                        try:
+                                            column = int(input("Choose a column (0-2): "))
+                                            row = int(input("Choose a row (0-2): "))
+                                            if column >= 0 and column <= 2 and row >= 0 and row <= 2:
+                                                valid = True
+                                            else:
+                                                print("Please enter valid values.")
+                                        except ValueError:
+                                            print("Sorry, all values must be integers!")
+                                    if row == 0:
+                                        if row0[column] == 0:
+                                            row0[column] = current_player
+                                            taken = False
+                                            valid_turn = True
+                                        else:
+                                            print("There is already a piece there!")
+                                    elif row == 1:
+                                        if row1[column] == 0:
+                                            row1[column] = current_player
+                                            taken = False
+                                            valid_turn = True
+                                        else:
+                                            print("There is already a piece there!")
                                     else:
-                                        print("Please enter valid values.")
-                                except ValueError:
-                                    print("Sorry, all values must be integers!")
-                            if row == 0:
-                                if row0[column] == 0:
-                                    row0[column] = current_player
-                                    taken = False
-                                    valid_turn = True
-                                else:
-                                    print("There is already a piece there!")
-                            elif row == 1:
-                                if row1[column] == 0:
-                                    row1[column] = current_player
-                                    taken = False
-                                    valid_turn = True
-                                else:
-                                    print("There is already a piece there!")
-                            else:
-                                if row2[column] == 0:
-                                    row2[column] = current_player
-                                    taken = False
-                                    valid_turn = True
-                                else:
-                                    print("There is already a piece there!")
-                            
-            name_player = input(f"What is Player {winning_player}'s name? ")
-            exists = False
-            for i in range(len(names)):
-                if name_player == names[i]:
-                    exists = True
-                    amount = names.index(name_player)
-                    times = 0
-                    passed_names = 0
-                    while passed_names < (amount+1):
-                        if leaderboard[times] == "$":
-                            passed_names += 1
-                        times += 1
-                    end = leaderboard.index("&", times)
-                    new_score = int(leaderboard[times:end]) + 1
-                    leaderboard = leaderboard[:times] + str(new_score) + leaderboard[end:]
-                    with open("tic_tac_toe_leaderboard.txt", "w") as f:
-                        f.write(leaderboard)
-                    break
-                
-            if exists == False:
-                with open("tic_tac_toe_leaderboard.txt", "a") as f:
-                    f.write(name_player + "$" + str(1) + "&")
+                                        if row2[column] == 0:
+                                            row2[column] = current_player
+                                            taken = False
+                                            valid_turn = True
+                                        else:
+                                            print("There is already a piece there!")
+                turn += 1
+            if tie is True:
+                print("It was a tie!")
+            else:
+                name_player = input(f"What is Player {winning_player}'s name? ")
+                exists = False
+                for i in range(len(names)):
+                    if name_player == names[i]:
+                        exists = True
+                        amount = names.index(name_player)
+                        times = 0
+                        passed_names = 0
+                        while passed_names < (amount+1):
+                            if leaderboard[times] == "$":
+                                passed_names += 1
+                            times += 1
+                        end = leaderboard.index("&", times)
+                        new_score = int(leaderboard[times:end]) + 1
+                        leaderboard = leaderboard[:times] + str(new_score) + leaderboard[end:]
+                        with open("tic_tac_toe_leaderboard.txt", "w") as f:
+                            f.write(leaderboard)
+                        break
+                    
+                if exists == False:
+                    with open("tic_tac_toe_leaderboard.txt", "a") as f:
+                        f.write(name_player + "$" + str(1) + "&")
 
         elif choice == "l" or choice == "leaderboard":
             print("===LEADERBOARD===")

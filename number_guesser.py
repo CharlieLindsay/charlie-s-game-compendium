@@ -188,6 +188,7 @@ def numberguesser():
                     end = leaderboard.index("&", times)
                     old_score = int(leaderboard[times:end])
                     if score > old_score:
+                        print("Congratulations beating your previous high score!")
                         leaderboard = leaderboard[:times] + str(score) + leaderboard[end:]
                         with open("number_guesser_leaderboard.txt", "w") as f:
                             f.write(leaderboard)

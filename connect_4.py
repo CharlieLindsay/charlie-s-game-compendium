@@ -263,6 +263,7 @@ def connectfour():
                                             in_a_row += 1
                         """
             name_player = input(f"What is Player {winning_player}'s name? ")
+            print("Congratulations on the win!")
             exists = False
             for i in range(len(names)):
                 if name_player == names[i]:

@@ -1,6 +1,9 @@
 """Tic Tac Toe Function Definition File."""
 def tictactoe():
     import os
+    leaderboardfile = "tic_tac_toe_leaderboard.txt"
+    if not os.path.exists(leaderboardfile):
+        open(leaderboardfile, "w").close()
     clear = lambda: os.system('clear')
     clear()
     LEADERBOARD_AMOUNT = 5

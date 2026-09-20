@@ -1,6 +1,10 @@
 def numberguesser():
     import os
     import random
+
+    leaderboardfile = "number_guesser_leaderboard.txt"
+    if not os.path.exists(leaderboardfile):
+        open(leaderboardfile, "w").close()
     clear = lambda: os.system('clear')  # Allows me to quickly clear the terminal
     clear()
     LEADERBOARD_AMOUNT = 5

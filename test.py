@@ -15,4 +15,4 @@ def main(stdscr):
         
 curses.wrapper(main)
 getch()
-print("This is a pretty cool test right")
+print("This is a pretty cool test right")  # Test

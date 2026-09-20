@@ -5,7 +5,6 @@ import connect_4
 import number_guesser
 import tic_tac_toe
 
-
 thing = False
 running = True
 exists, name = user_management.name_exists()

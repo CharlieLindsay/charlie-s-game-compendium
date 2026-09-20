@@ -31,6 +31,10 @@ def tictactoe():
         length_leaderboard = len(leaderboard)
         if length_leaderboard == 0:  # Checks if the leaderboard has no data yet
             print("No leaderboard data so far!")
+            name_column = "Name"
+            first = second = third = fourth = fifth = ""
+            first_value = second_value = third_value = fourth_value = fifth_value = 0
+            first_gap = second_gap = third_gap = fourth_gap = fifth_gap = ""
         else:
             current = ""
             current_score = ""
@@ -248,12 +252,14 @@ def tictactoe():
 
         elif choice == "l" or choice == "leaderboard":
             print("===LEADERBOARD===")
-            print(name_column)
-            print(first+first_gap+str(first_value))
-            print(second+second_gap+str(second_value))
-            print(third+third_gap+str(third_value))
-            print(fourth+fourth_gap+str(fourth_value))
-            print(fifth+fifth_gap+str(fifth_value))
+            entries = [(first, first_value, first_gap), (second, second_value, second_gap), (third, third_value, third_gap), (fourth, fourth_value, fourth_gap), (fifth, fifth_value, fifth_gap)]
+            num_entries = min(LEADERBOARD_AMOUNT, len(names))
+            if num_entries == 0:
+                print("No leaderboard data so far!")
+            else:
+                print(name_column)
+                for i in range(num_entries):
+                    print(entries[i][0]+entries[i][2]+str(entries[i][1]))
         elif choice == "q" or choice == "quit":
             valid = True
         else:

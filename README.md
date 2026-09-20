@@ -9,7 +9,7 @@ A simple Python Terminal Based game compendium I made to help sharpen my skills 
 - Explanations on how to play
 
 ## How to Play
-- Install using pip: pip install charlie-game-compendium
+- Install using pip: ```pip install charlie-game-compendium```
 - Run using: charlie-games
 
 

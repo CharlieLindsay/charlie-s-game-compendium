@@ -1,20 +1,18 @@
 import curses
-import textwrap
-import keyboard
-"""
-def main(stdscr):
-    stdscr.keypad(True)
-    while True:
-        print(stdscr.getkey())
-    stdscr.clear()
-curses.wrapper(main)
-"""
-
-from terminedia import getch
 import time
+#import keyboard
 
+#keyboard.wait('q') 
+def main(stdscr):
+    key = ""
+    while True:
+        current_key = key
+        key = stdscr.getkey()
+        if key != current_key:
+            print(key)
+            time.sleep(1)
+        stdscr.clear()
+        
+curses.wrapper(main)
 getch()
-valid = False
-while valid is False:
-    if keyboard.is_pressed('q'):
-        valid = True
+print("This is a pretty cool test right")

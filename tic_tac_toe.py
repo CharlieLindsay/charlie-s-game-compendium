@@ -160,11 +160,63 @@ def tictactoe():
                     elif row2[i] == 2:
                         row += "O"
                 print(row)
-                if turn >= 5:
-                    response = input(f"Has {current_player} won (N/y)? ").lower()
-                    if response == "y":
-                        winner = True
-                        winning_player = current_player
+
+                # Winner checking
+                # Horizontal
+                if row0[0] == 1 and row0[1] == 1 and row0[2] == 1:
+                    winner = True
+                    winner_player = 1
+                elif row0[0] == 2 and row0[1] == 2 and row0[2] == 2:
+                    winner = True
+                    winning_player = 2
+                elif row1[0] == 1 and row1[1] == 1 and row1[2] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row1[0] == 2 and row1[1] == 2 and row1[2] == 2:
+                    winner = True
+                    winning_player = 2
+                elif row2[0] == 1 and row2[1] == 1 and row2[2] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row2[0] == 2 and row2[1] == 2 and row2[2] == 2:
+                    winner = True
+                    winning_player = 2
+                
+                # Vertical
+                elif row0[0] == 1 and row1[0] == 1 and row2[0] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row0[0] == 2 and row1[0] == 2 and row2[0] == 2:
+                    winner = True
+                    winning_player = 2
+                elif row0[1] == 1 and row1[1] == 1 and row2[1] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row0[1] == 2 and row1[1] == 2 and row2[1] == 2:
+                    winner = True
+                    winning_player = 2
+                elif row0[2] == 1 and row1[2] == 1 and row2[2] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row0[2] == 2 and row1[2] == 2 and row2[2] == 2:
+                    winner = True
+                    winning_player = 2
+                
+                # Diagonal
+                elif row0[0] == 1 and row1[1] == 1 and row2[2] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row0[0] == 2 and row1[1] == 2 and row2[2] == 2:
+                    winner = True
+                    winning_player = 2
+                elif row0[2] == 1 and row1[1] == 1 and row2[0] == 1:
+                    winner = True
+                    winning_player = 1
+                elif row0[2] == 2 and row1[1] == 2 and row2[0] == 2:
+                    winner = True
+                    winning_player = 2
+                
+                
                 if winner is False:
                     if turn > 8:
                         tie = True

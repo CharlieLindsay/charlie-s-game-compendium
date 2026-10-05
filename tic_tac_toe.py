@@ -165,7 +165,7 @@ def tictactoe():
                 # Horizontal
                 if row0[0] == 1 and row0[1] == 1 and row0[2] == 1:
                     winner = True
-                    winner_player = 1
+                    winning_player = 1
                 elif row0[0] == 2 and row0[1] == 2 and row0[2] == 2:
                     winner = True
                     winning_player = 2
@@ -181,7 +181,7 @@ def tictactoe():
                 elif row2[0] == 2 and row2[1] == 2 and row2[2] == 2:
                     winner = True
                     winning_player = 2
-                
+
                 # Vertical
                 elif row0[0] == 1 and row1[0] == 1 and row2[0] == 1:
                     winner = True
@@ -215,9 +215,10 @@ def tictactoe():
                 elif row0[2] == 2 and row1[1] == 2 and row2[0] == 2:
                     winner = True
                     winning_player = 2
-                
-                
-                if winner is False:
+
+                if winner is True:
+                    print(f"Player {winning_player} wins!")
+                else:
                     if turn > 8:
                         tie = True
                         winner = True

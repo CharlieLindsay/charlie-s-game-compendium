@@ -191,12 +191,241 @@ def connectfour():
                 print(row)
                 valid_turn = False
                 turns += 1
+                """
                 if turns >= 8:
                     winner_announced = input(f"Has {current_player} got 4 in a row (N/y)? ").lower()
                     if winner_announced == "y":
                         winning_player = current_player
                         winner = True
                         valid_turn = True
+                """
+                player_1_best = 0
+                player_2_best = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+
+                for i in range(7):
+                    if row0[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row0[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+                for i in range(7):
+                    if row1[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row1[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+                for i in range(7):
+                    if row2[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row2[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+                for i in range(7):
+                    if row3[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row3[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+                for i in range(7):
+                    if row4[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row4[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                player_1_in_a_row = 0
+                player_2_in_a_row = 0
+                for i in range(7):
+                    if row5[i] == 1:
+                        player_1_in_a_row += 1
+                        player_2_in_a_row = 0
+                        if player_1_in_a_row > player_1_best:
+                            player_1_best = player_1_in_a_row
+                    elif row5[i] == 2:
+                        player_2_in_a_row += 1
+                        player_1_in_a_row = 0
+                        if player_2_in_a_row > player_2_best:
+                            player_2_best = player_2_in_a_row
+                    else:
+                        player_1_in_a_row = 0
+                        player_2_in_a_row = 0
+                for i in range(7):
+                    column = [row0[i], row1[i], row2[i], row3[i], row4[i], row5[i]]
+                    player_1_in_a_row = 0
+                    player_2_in_a_row = 0
+                    for cell in column:
+                        if cell == 1:
+                            player_1_in_a_row += 1
+                            player_2_in_a_row = 0
+                            if player_1_in_a_row > player_1_best:
+                                player_1_best = player_1_in_a_row
+                        elif cell == 2:
+                            player_2_in_a_row += 1
+                            player_1_in_a_row = 0
+                            if player_2_in_a_row > player_2_best:
+                                player_2_best = player_2_in_a_row
+                        else:
+                            player_1_in_a_row = 0
+                            player_2_in_a_row = 0
+                
+                if player_1_best >= 4 or player_2_best >= 4:
+                    winning_player = current_player
+                    winner = True
+                    valid_turn = True
+                for i in range(3):
+                    if i > 0:
+                        if row0[3] == i and row1[4] == i and row2[5] == i and row3[6] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[2] == i and row1[3] == i and row2[4] == i and row3[5] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[1] == i and row1[2] == i and row2[3] == i and row3[4] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[0] == i and row1[1] == i and row2[2] == i and row3[3] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
+                        elif row1[3] == i and row2[4] == i and row3[5] == i and row4[6] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[2] == i and row2[3] == i and row3[4] == i and row4[5] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[1] == i and row2[2] == i and row3[3] == i and row4[4] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[0] == i and row2[1] == i and row3[2] == i and row4[3] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
+                        elif row2[3] == i and row3[4] == i and row4[5] == i and row5[6] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[2] == i and row3[3] == i and row4[4] == i and row5[5] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[1] == i and row3[2] == i and row4[3] == i and row5[4] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[0] == i and row3[1] == i and row4[2] == i and row5[3] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
+
+                        elif row0[6] == i and row1[5] == i and row2[4] == i and row3[3] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[5] == i and row1[4] == i and row2[3] == i and row3[2] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[4] == i and row1[3] == i and row2[2] == i and row3[1] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row0[3] == i and row1[2] == i and row2[1] == i and row3[0] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
+                        elif row1[3] == i and row2[2] == i and row3[1] == i and row4[0] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[5] == i and row2[4] == i and row3[3] == i and row4[2] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[4] == i and row2[3] == i and row3[2] == i and row4[1] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row1[3] == i and row2[2] == i and row3[1] == i and row4[0] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
+                        elif row2[6] == i and row3[5] == i and row4[4] == i and row5[3] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[5] == i and row3[4] == i and row4[3] == i and row5[2] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[4] == i and row3[3] == i and row4[2] == i and row5[1] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+                        elif row2[3] == i and row3[2] == i and row4[1] == i and row5[0] == i:
+                            winning_player = i
+                            winner = True
+                            valid_turn = True
+
                 if current_player == 2:
                     current_player = 1
                 else:
@@ -269,6 +498,7 @@ def connectfour():
                                         except:
                                             in_a_row += 1
                         """
+            print(f"Player {winning_player} won! Congratulations!")
             name_player = input(f"What is Player {winning_player}'s name? ")
             print("Congratulations on the win!")
             exists = False

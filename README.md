@@ -7,10 +7,12 @@ A simple Python Terminal Based game compendium I made to help sharpen my skills 
 - Leaderboard storage for all 3
 - Primary user name saving
 - Explanations on how to play
+- Automatic win checking for all games
 
 ## How to Play
 - Install using pip: ```pip install charlie-game-compendium```
 - Run using: charlie-games
+- If updating, run: ```pip install --upgrade charlie-game-compendium```
 
 
 This was made during Hackclub's Stardance. I hope you enjoy and like it!
